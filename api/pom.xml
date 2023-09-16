@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.3</version>
+		<version>3.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ucsal.prontuario</groupId>
-	<artifactId>api</artifactId>
+	<groupId>com.ucsal</groupId>
+	<artifactId>prontuario</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>api</name>
-	<description>API Rest do Prontuario</description>
+	<name>prontuario</name>
+	<description>Demo prontuario app</description>
 	<properties>
 		<java.version>20</java.version>
 	</properties>
@@ -72,7 +72,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-</dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
