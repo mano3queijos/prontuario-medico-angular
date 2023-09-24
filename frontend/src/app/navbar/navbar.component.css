@@ -1,0 +1,24 @@
+.navbar-home {
+    background: #4A6B83;
+    margin: auto;
+    max-width: 90%;
+    border-radius: 40px;
+    text-align: center;
+    min-height: 120px;
+}
+
+.nav-link {
+    color: white !important;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+.nav-link:hover{
+    color: aqua !important;
+}
+
+.navbar-collapse {
+    transition: height 0.5s ease-out;
+}
+

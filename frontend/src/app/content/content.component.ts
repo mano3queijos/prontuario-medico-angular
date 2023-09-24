@@ -7,16 +7,22 @@ import { AxiosService } from '../axios.service';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent {
-	componentToShow: string = "welcome";
 
-	constructor(private axiosService: AxiosService) { }
+	componentToShow: string = "welcome";
+	constructor(private axiosService: AxiosService) { 
+		
+		
+	}
+	
 
 	showComponent(componentToShow: string): void {
     this.componentToShow = componentToShow;
   }
 
 	onLogin(input: any): void {
+		
 		this.axiosService.request(
+
 		    "POST",
 		    "/login",
 		    {
@@ -55,5 +61,6 @@ export class ContentComponent {
 		    }
 		);
 	}
+	
 
 }
