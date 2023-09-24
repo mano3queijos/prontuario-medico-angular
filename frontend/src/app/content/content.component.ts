@@ -29,7 +29,7 @@ export class ContentComponent {
 		    }).catch(
 		    error => {
 		        this.axiosService.setAuthToken(null);
-		        this.componentToShow = "welcome";
+		        this.componentToShow = "ratumalaka";
 		    }
 		);
 

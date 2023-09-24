@@ -5,10 +5,14 @@ import { EventEmitter, Component, Output } from '@angular/core';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css'],
   })
+  
 export class LoginFormComponent {
 
   @Output() onSubmitLoginEvent = new EventEmitter();
   @Output() onSubmitRegisterEvent = new EventEmitter();
+  @Output() loginEvent = new EventEmitter();
+	@Output() logoutEvent = new EventEmitter();
+  
 
 	active: string = "login";
   firstName: string = "";
