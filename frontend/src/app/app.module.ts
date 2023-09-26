@@ -13,6 +13,7 @@ import { ContentComponent } from './content/content.component';
 
 import { AxiosService } from './axios.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     WelcomeContentComponent,
     AuthContentComponent,
     ContentComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
