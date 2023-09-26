@@ -1,4 +1,4 @@
-.navbar-home {
+ .navbar-home {
     background: #4A6B83;
     margin: auto;
     max-width: 90%;
@@ -20,5 +20,4 @@
 
 .navbar-collapse {
     transition: height 0.5s ease-out;
-}
-
+} 
