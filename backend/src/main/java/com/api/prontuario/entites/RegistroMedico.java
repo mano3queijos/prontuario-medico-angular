@@ -19,6 +19,7 @@ public class RegistroMedico {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Paciente paciente;
     private List<Medicamento> medicamentosEmuso = new ArrayList<>();
     private List<Consulta> consultas = new ArrayList<>();
     private List<Exame> exames = new ArrayList<>();
