@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Pessoa {
+public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -37,8 +37,7 @@ public class Pessoa {
 
     private String curso;
     private String telefone;
-//    Externo;
-//    Colaborador;
+    private boolean isExterno;
 
 
 }
