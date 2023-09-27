@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "consulta")
+@Table(name = "registromedico")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,11 +19,12 @@ public class RegistroMedico {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @OneToOne(mappedBy = "registromedico")
     private Paciente paciente;
-    private List<Medicamento> medicamentosEmuso = new ArrayList<>();
+    private List<Medicamento> medicamentos = new ArrayList<>();
     private List<Consulta> consultas = new ArrayList<>();
     private List<Exame> exames = new ArrayList<>();
     private List<Procedimento> procedimentos = new ArrayList<>();
-    private List<Historico> historicoList;
+    private List<Historico> historicoList = new ArrayList<>();
 
 }

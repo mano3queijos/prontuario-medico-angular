@@ -37,6 +37,7 @@ public class Paciente extends Pessoa {
     @CollectionTable(name = "comorbidade", joinColumns = @JoinColumn(name = "paciente_id"))
     private List<String> comorbidades;
 
-    @OneToMany(mappedBy = "paciente")
-    private List<Consulta> consultas;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "registro_medico_id", referencedColumnName = "id")
+    private RegistroMedico registroMedico;
 }
