@@ -18,7 +18,11 @@ public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "paciente_id")
     private Paciente paciente;
+
     //private Medico medico;
     private LocalDateTime diaHorario;
 

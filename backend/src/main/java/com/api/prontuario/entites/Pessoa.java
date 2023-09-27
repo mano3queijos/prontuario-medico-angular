@@ -24,9 +24,17 @@ public class Pessoa {
     private String raca;
     private Double peso;
     private Integer altura;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
+
     private String email;
+
+    @ElementCollection
+    @CollectionTable(name = "alergia", joinColumns = @JoinColumn(name = "pessoa_id"))
     private List<String> alergias;
+
     private String curso;
     private String telefone;
 //    Externo;
