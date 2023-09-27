@@ -1,17 +1,28 @@
 <div class="container mt-5">
-    <div class="alert home" role="">
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
+    <div class="alert home" >
 
+<div class=".data_hora bolder ">
+   <h1>
+{{ dataHoraAtual }}
+   </h1>
+   <h1>
+BEM VINDO {{ nomeDoUsuario }}   </h1>
+</div>
+<!-- terminar de ajeitar mais tarde -->
+<div class="mt-5" Style="padding-right:  700px;">
+    <h1>CONSULTAS NESTE DIA:</h1>
+
+</div>
+<li *ngFor="let consulta of consultas">
+    <div>
+        <img [src]="consulta.imagemMedico" alt="Imagem do Médico">
+    </div>
+    <div>
+        <p>Médico: {{ consulta.nomeMedico }}</p>
+        <p>Paciente: {{ consulta.nomePaciente }}</p>
+        <p>Horário: {{ consulta.horario }}</p>
+    </div>
+</li>
 
     </div>
 </div>
