@@ -1,9 +1,22 @@
 package com.api.prontuario.entites;
 
 
-import java.util.List;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+@Entity
+@Table(name = "consulta")
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Paciente extends Pessoa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String queixa;
     private String anamnese;
     private String exameFisico;
