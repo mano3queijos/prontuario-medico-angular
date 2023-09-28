@@ -25,7 +25,7 @@ public class Medicamento {
     private String contraIndicacao;
     //private Medico medico;
 
-    private List<String> frequencia = new ArrayList<>();
+    private String frequencia;
     private boolean emUso;
 
 }
