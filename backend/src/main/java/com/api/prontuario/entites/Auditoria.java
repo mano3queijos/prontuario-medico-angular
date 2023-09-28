@@ -19,7 +19,8 @@ public class Auditoria {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "id_usuario")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private User usuario;
 
     @Enumerated(EnumType.STRING)

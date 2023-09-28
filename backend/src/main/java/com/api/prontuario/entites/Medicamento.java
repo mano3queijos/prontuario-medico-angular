@@ -20,8 +20,11 @@ public class Medicamento {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long nome;
+    private String descricao;
+
     private String contraIndicacao;
     //private Medico medico;
+
     private List<String> frequencia = new ArrayList<>();
     private boolean emUso;
 

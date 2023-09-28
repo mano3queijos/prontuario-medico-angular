@@ -1,7 +1,9 @@
 package com.api.prontuario.mappers;
 
+import com.api.prontuario.dtos.MedicoDto;
 import com.api.prontuario.dtos.SignUpDto;
 import com.api.prontuario.dtos.UserDto;
+import com.api.prontuario.entites.Medico;
 import com.api.prontuario.entites.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -10,8 +12,10 @@ import org.mapstruct.Mapping;
 public interface UserMapper {
 
     UserDto toUserDto(User user);
+    MedicoDto toMedicoDto(Medico medico);
 
     @Mapping(target = "password", ignore = true)
     User signUpToUser(SignUpDto signUpDto);
+
 
 }
