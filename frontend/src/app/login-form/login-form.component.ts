@@ -1,5 +1,5 @@
 import { EventEmitter, Component, Renderer2 ,Output, Input} from '@angular/core';
-
+import {AuthContentComponent} from '../auth-content/auth-content.component';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -41,8 +41,8 @@ componentToShow: string = 'welcome';
   }
 
   onSubmitLogin(): void {
-    this.onSubmitLoginEvent.emit({"login": this.login, "password": this.password});
-  }
+    this.authService.
+    }
 
   onSubmitRegister(): void {
     this.onSubmitRegisterEvent.emit({"firstName": this.firstName, "lastName": this.lastName, "login": this.login, "password": this.password});
