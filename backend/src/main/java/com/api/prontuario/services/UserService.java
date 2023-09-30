@@ -4,7 +4,7 @@ import com.api.prontuario.dtos.CredentialsDto;
 import com.api.prontuario.dtos.SignUpDto;
 import com.api.prontuario.dtos.UserDto;
 import com.api.prontuario.entites.User;
-import com.api.prontuario.exceptions.AppException;
+import com.api.prontuario.infra.exceptions.AppException;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

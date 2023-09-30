@@ -2,7 +2,7 @@ package com.api.prontuario.services;
 
 import com.api.prontuario.dtos.MedicoDto;
 import com.api.prontuario.entites.Medico;
-import com.api.prontuario.exceptions.AppException;
+import com.api.prontuario.infra.exceptions.AppException;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.repositories.MedicoRepository;
 import lombok.RequiredArgsConstructor;

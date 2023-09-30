@@ -38,6 +38,4 @@ public class PacienteController {
         Paciente paciente = pacienteService.register(new Paciente(pacienteDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(new PacienteDto(paciente));
     }
-
-
 }

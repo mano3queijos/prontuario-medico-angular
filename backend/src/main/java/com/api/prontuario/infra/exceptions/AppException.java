@@ -1,4 +1,4 @@
-package com.api.prontuario.exceptions;
+package com.api.prontuario.infra.exceptions;
 
 import org.springframework.http.HttpStatus;
 
