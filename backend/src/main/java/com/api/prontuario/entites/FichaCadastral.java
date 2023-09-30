@@ -16,8 +16,6 @@ public class FichaCadastral {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(mappedBy = "ficha_cadastral")
-    private Paciente paciente;
     private String queixa;
     private String anamnese;
     @Column(name = "exame_fisico")
@@ -38,6 +36,9 @@ public class FichaCadastral {
     @CollectionTable(name = "comorbidade", joinColumns = @JoinColumn(name = "paciente_id"))
     private List<String> comorbidades;
 
+    @OneToOne(mappedBy = "ficha_cadastral")
+    private Paciente paciente;
+
     public FichaCadastral(FichaCadastralDto fichaCadastralDto) {
         this.queixa = fichaCadastralDto.queixa();
         this.anamnese = fichaCadastralDto.anamnese();
@@ -48,7 +49,6 @@ public class FichaCadastral {
         this.temperatura = fichaCadastralDto.temperatura();
         this.dor = fichaCadastralDto.dor();
         this.saturacao = fichaCadastralDto.saturacao();
-        this.curso = fichaCadastralDto.curso();
         this.glicemiaCapilar = fichaCadastralDto.glicemiaCapilar();
         this.comorbidades = fichaCadastralDto.comorbidades();
     }

@@ -30,6 +30,6 @@ public class Paciente extends Pessoa{
     public Paciente(PacienteDto pacienteDto) {
         this.fichaCadastral = new FichaCadastral(pacienteDto.fichaCadastralDto());
         this.registroMedico = new RegistroMedico(pacienteDto.registroMedicoDto());
-        this.curso = curso;
+        this.curso = pacienteDto.curso();
     }
 }
