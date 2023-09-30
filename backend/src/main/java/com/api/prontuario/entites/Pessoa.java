@@ -35,7 +35,7 @@ public abstract class Pessoa {
     @CollectionTable(name = "alergia", joinColumns = @JoinColumn(name = "pessoa_id"))
     private List<String> alergias;
 
-    private String curso;
+
     private String telefone;
     private boolean isExterno;
 

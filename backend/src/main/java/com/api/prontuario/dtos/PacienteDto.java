@@ -1,16 +1,26 @@
 package com.api.prontuario.dtos;
 
-import java.util.Date;
-import java.util.List;
+import com.api.prontuario.entites.Paciente;
+import com.api.prontuario.entites.RegistroMedico;
+import com.api.prontuario.mappers.UserMapper;
+import com.api.prontuario.repositories.PacienteRepository;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
-public record PacienteDto(String nome, String cpf, Date dataNasc,
-                          String telefone, String raca, String curso,
-                          String colaborador, String externo, Double peso,
-                          Integer altura, String email, String cep, String complemento,
-                          String logradouro, String numero, String bairro,
-                          String cidade, String estado, String pais,
-                          List<String> alergias, boolean isExterno, String queixa,
-                          String anamnese, String exameFisico, String pressaoArterial,
-                          String frequenciaCardiaca, String frequenciaRespiratoria,
-                          String temperatura, String dor, String saturacao,
-                          String glicemiaCapilar, List<String> comorbidades) {}
+import java.util.Date;
+
+public record PacienteDto(@Valid @NotNull FichaCadastralDto fichaCadastralDto, @NotNull String nome, @NotNull @Pattern(regexp = "^\\d{3}.\\d{3}.\\d{3}-\\d{2}$") String cpf,
+                          @NotNull Date dataNasc, @Valid EnderecoDto enderecoDto,
+                          String telefone, @NotNull String raca, @NotNull Double peso, @NotNull String curso,
+                          @NotNull Integer altura, @NotNull String email, @Valid @NotNull RegistroMedicoDto registroMedicoDto) {
+    private static UserMapper userMapper;
+    public PacienteDto(Paciente paciente) {
+        this(userMapper.toFichaCadastralDto(paciente.getFichaCadastral()), paciente.getNome(), paciente.getCpf(),
+                paciente.getDataNasc(), userMapper.toEnderecoDto(paciente.getEndereco()), paciente.getTelefone(),
+                paciente.getRaca(), paciente.getPeso(), paciente.getCurso(),
+                paciente.getAltura(), paciente.getEmail(), userMapper.toRegistroMedicoDto(paciente.getRegistroMedico()));
+    }
+}
+
+
