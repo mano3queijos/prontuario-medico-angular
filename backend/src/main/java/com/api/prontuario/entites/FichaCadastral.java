@@ -37,6 +37,7 @@ public class FichaCadastral {
     private List<String> comorbidades;
 
     @OneToOne(mappedBy = "ficha_cadastral")
+    @JoinColumn(name = "paciente_id", referencedColumnName = "id")
     private Paciente paciente;
 
     public FichaCadastral(FichaCadastralDto fichaCadastralDto) {
