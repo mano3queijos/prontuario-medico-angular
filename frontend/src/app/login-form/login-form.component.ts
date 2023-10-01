@@ -41,7 +41,7 @@ componentToShow: string = 'welcome';
   }
 
   onSubmitLogin(): void {
-    this.authService.
+    this.onSubmitLoginEvent.emit({"login": this.login, "password": this.password});
     }
 
   onSubmitRegister(): void {
