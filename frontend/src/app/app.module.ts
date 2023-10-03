@@ -14,6 +14,10 @@ import { ContentComponent } from './content/content.component';
 import { AxiosService } from './axios.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { PacienteComponent } from './paciente/paciente.component';
+import { ConsultaComponent } from './consulta/consulta.component';
+import { AgendaComponent } from './agenda/agenda.component';
+import { CadastroPacienteComponent } from './cadastro-paciente/cadastro-paciente.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { HomeComponent } from './home/home.component';
     AuthContentComponent,
     ContentComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    PacienteComponent,
+    ConsultaComponent,
+    AgendaComponent,
+    CadastroPacienteComponent,
   ],
   imports: [
     BrowserModule,
