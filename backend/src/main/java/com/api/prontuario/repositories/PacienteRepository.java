@@ -13,6 +13,4 @@ import java.util.Optional;
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
     Optional<Paciente> findByCpf(String cpf);
 
-    Page<Paciente> listarTodos(Pageable page);
-
 }

@@ -6,6 +6,7 @@ import com.api.prontuario.infra.exceptions.AppException;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.repositories.PacienteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PacienteService {
 
-    private final PacienteRepository pacienteRepository;
+    @Autowired
+    private PacienteRepository pacienteRepository;
 
     private final UserMapper userMapper;
 
@@ -35,8 +37,6 @@ public class PacienteService {
     }
 
     public Page<Paciente> listarTodos(Pageable paginacao) {
-        return pacienteRepository.listarTodos(paginacao);
+        return pacienteRepository.findAll(paginacao);
     }
-
-
 }

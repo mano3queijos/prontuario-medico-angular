@@ -4,6 +4,7 @@ import com.api.prontuario.dtos.PacienteDto;
 import com.api.prontuario.entites.Paciente;
 import com.api.prontuario.services.PacienteService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -14,12 +15,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/paciente")
 public class PacienteController {
-
-    private final PacienteService pacienteService;
-
-    public PacienteController(PacienteService pacienteService) {
-        this.pacienteService = pacienteService;
-    }
+    @Autowired
+    private PacienteService pacienteService;
 
     @GetMapping
     public ResponseEntity<Page<PacienteDto>> buscarTodos (@PageableDefault(size = 10) Pageable paginacao) {
