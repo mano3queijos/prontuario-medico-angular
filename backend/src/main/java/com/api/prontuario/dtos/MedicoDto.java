@@ -1,5 +1,6 @@
 package com.api.prontuario.dtos;
 
+import com.api.prontuario.entites.Medico;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +18,7 @@ public class MedicoDto {
     private String especialidade;
     private String cpf;
     private Date dataNasc;
+
+    public MedicoDto(Medico medico) {
+    }
 }

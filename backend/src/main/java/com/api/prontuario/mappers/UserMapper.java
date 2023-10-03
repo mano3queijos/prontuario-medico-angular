@@ -4,6 +4,7 @@ import com.api.prontuario.dtos.*;
 import com.api.prontuario.entites.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.data.domain.Page;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
@@ -16,11 +17,7 @@ public interface UserMapper {
 
     PacienteDto toPacienteDto(Paciente paciente);
 
-//    Medico toMedico(MedicoDto medicoDto);
-//    tá certo isso davi?
-
     @Mapping(target = "password", ignore = true)
     User signUpToUser(SignUpDto signUpDto);
-
 
 }

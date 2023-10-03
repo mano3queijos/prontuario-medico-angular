@@ -1,10 +1,12 @@
 package com.api.prontuario.infra.exceptions;
 
+import com.api.prontuario.dtos.ErrorDto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
@@ -20,10 +22,18 @@ public class TratadorDeErros {
         var erros = e.getFieldErrors();
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
     }
-
+    @ExceptionHandler(value = { AppException.class })
+    @ResponseBody
+    public ResponseEntity<ErrorDto> handleException(AppException ex) {
+        return ResponseEntity
+                .status(ex.getStatus())
+                .body(new ErrorDto(ex.getMessage()));
+    }
     private record DadosErroValidacao(String campo, String mensagem){
         public DadosErroValidacao(FieldError erro){
             this(erro.getField(), erro.getDefaultMessage());
         }
     }
+
+
 }

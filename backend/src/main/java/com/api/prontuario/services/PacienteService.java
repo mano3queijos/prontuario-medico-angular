@@ -39,4 +39,12 @@ public class PacienteService {
     public Page<Paciente> listarTodos(Pageable paginacao) {
         return pacienteRepository.findAll(paginacao);
     }
+
+    public void deletar(Long id) {
+        pacienteRepository.deleteById(id);
+    }
+
+//    public Paciente atualizar(Paciente paciente) {
+//
+//    }
 }
