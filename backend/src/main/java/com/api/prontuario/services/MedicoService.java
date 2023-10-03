@@ -6,6 +6,7 @@ import com.api.prontuario.infra.exceptions.AppException;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.repositories.MedicoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class MedicoService {
 
-    private final MedicoRepository Repository;
+    @Autowired
+    private MedicoRepository repository;
 
     private final UserMapper userMapper;
 
-    public MedicoDto findByLogin(String login) {
-        Medico medico = Repository.findByLogin(login).orElseThrow(() -> new AppException("Unknown medico", HttpStatus.NOT_FOUND));
-        return userMapper.toMedicoDto(medico);
-    }
+//    public MedicoDto findByLogin(String login) {
+//        Medico medico = repository.findByLogin(login).orElseThrow(() -> new AppException("Unknown medico", HttpStatus.NOT_FOUND));
+//        return userMapper.toMedicoDto(medico);
+//    }
 
 }
