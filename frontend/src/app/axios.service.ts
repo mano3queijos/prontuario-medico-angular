@@ -29,6 +29,8 @@ export class AxiosService {
 
       if (this.getAuthToken() !== null) {
           headers = {"Authorization": "Bearer " + this.getAuthToken()};
+                  console.log("Token:", this.getAuthToken()); // Adicione esta linha para imprimir o token
+
       }
 
       return axios({

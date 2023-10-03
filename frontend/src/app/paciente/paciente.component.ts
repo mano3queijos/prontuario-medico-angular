@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './paciente.component.html',
   styleUrls: ['./paciente.component.css']
 })
+
 export class PacienteComponent {
 
 

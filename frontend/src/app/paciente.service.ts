@@ -1,65 +1,45 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Paciente } from './paciente/shared/paciente';
+
+const baseUrl = 'http://localhost:8080/paciente';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PacienteService {
 
-  private pacientes: Paciente[] = [];
+  constructor(private http: HttpClient) { }
 
-  createPaciente(paciente: Paciente): void {
-    this.pacientes.push(paciente);
+  getAll(): Observable<Paciente[]> {
+    return this.http.get<Paciente[]>(baseUrl);
   }
 
-  getPacientes(): Paciente[] {
-    return this.pacientes;
+  get(id: any): Observable<Paciente> {
+    return this.http.get<Paciente>(`${baseUrl}/${id}`);
   }
 
-  updatePaciente(id: number, updatedPaciente: Paciente): void {
-    const index = this.pacientes.findIndex(p => p.id === id);
-    if (index !== -1) {
-      this.pacientes[index] = updatedPaciente;
-    }
-  }
-
-  deletePaciente(id: number): void {
-    const index = this.pacientes.findIndex(p => p.id === id);
-    if (index !== -1) {
-      this.pacientes.splice(index, 1);
-    }
-  }
+create(data: any): Observable<any> {
+  return this.http.post(`${baseUrl}/cadastrar`, data);
 }
 
-export interface Paciente {
-  id: number;
 
-  nome: string;
-  dataNascimento: Date; // Data de Nascimento no formato "dd/mm/yyyy"
-  raca: string;
-  peso: number;
-  altura: number;
-  curso: string;
-  colaborador: boolean;
-  externo: boolean;
-  endereco: string;
-  telefone: string; // Telefone no formato "(00) 99999-9999"
-  email: string;
-  queixaHistoriaMolesia: string;
-  anamnese: string;
-  alergias: boolean;
-  quaisAlergias?: string; // Somente se alergias for verdadeiro (boolean)
-  medicamento: string;
-  exameFisico: {
-    pressaoArterial: string; // Exemplo: "120/80"
-    frequenciaRespiratoria: number;
-    frequenciaCardiaca: number;
-    temperatura: number;
-    dor: string;
-    saturacao: number;
-    glicemiaCapilar: number;
-  };
-  comorbidades: string[];
-  medicacaoEmUso: string[];
-  evolucaoEnfermagem: string;
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/deletar/${id}`);
+  }
+
+  deleteAll(): Observable<any> {
+    return this.http.delete(baseUrl);
+  }
+
+  findById(title: any): Observable<Paciente[]> {
+    return this.http.get<Paciente[]>(`${baseUrl}?title=${title}`);
+  }
 }
-

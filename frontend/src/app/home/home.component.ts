@@ -50,7 +50,7 @@ atualizarDataHora() {
 const usuarioId = 1; // pegar o id pelo token
     const dataEspecifica = this.dataDoDia;
 
-    this.axiosService.request('GET', `/api/consultas/${usuarioId}?data=${this.dataDoDia}`, null).then((response)=>{
+    this.axiosService.request('GET', `/consultas/${usuarioId}?data=${this.dataDoDia}`, null).then((response)=>{
       this.consultas = response.data;
     }).catch((error) => {
       console.error('Erro ao obter consultas:', error);

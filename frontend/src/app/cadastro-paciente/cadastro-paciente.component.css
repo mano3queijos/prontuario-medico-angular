@@ -1,0 +1,13 @@
+.box {
+    background: #D9D9D9;
+    margin: auto;
+    max-width: 93%;
+    border-radius: 40px;
+    text-align: center;
+    min-height: 120px;
+}
+
+h1 {
+    font-size: large;
+    font-weight: 700;
+}

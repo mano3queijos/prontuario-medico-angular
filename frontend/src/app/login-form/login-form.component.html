@@ -6,7 +6,7 @@
 			<div [ngClass]="active == 'login' ? 'tab-pane fade show active' : 'tab-pane fade'">
 				<form (ngSubmit)="onSubmitLogin()" #loginForm="ngForm">
 					<div class="form-outline mb-4">
-						<label class="form-label" for="loginName">Login</label>
+						<label class="form-langbel" for="loginName">Login</label>
 						<input type="login" id="loginName" placeholder="login" name="login" class="form-control"
 							[(ngModel)]="login" />
 					</div>
@@ -22,8 +22,8 @@
 						(click)="onExitButtonClick()">Exit</button>
 				</form>
 			</div>
-			<div [ngClass]="active == 'register' ? 'tab-pane fade show active' : 'tab-pane fade'">
-				<form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
+			<!-- <div [ngClass]="active == 'register' ? 'tab-pane fade show active' : 'tab-pane fade'">
+			 <form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
 					<div class="form-outline mb-4">
 						<input type="text" id="firstName" name="firstName" class="form-control"
 							[(ngModel)]="firstName" />
@@ -49,8 +49,8 @@
 					<button type="submit" class="btn btn-primary col-6 btn-block mb-4">Sign in</button>
 					<button type="submit" class="btn btn-primary col-6 btn-block mb-4 ml-2"
 						(click)="onExitButtonClick()">Exit</button>
-				</form>
-			</div>
+				</form> -->
+			 
 		</div>
 	</div>
 </div>

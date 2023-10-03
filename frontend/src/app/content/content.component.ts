@@ -8,12 +8,21 @@ import { AxiosService } from '../axios.service';
 })
 export class ContentComponent {
 
+	  isLoggedIn: boolean = false;
+
 	componentToShow: string = "welcome";
 	constructor(private axiosService: AxiosService) { 
 		
-		
+	
 	}
 	
+
+	handleLoginSuccess() {
+    // Lógica de verificação de login bem-sucedido
+    // Após a verificação bem-sucedida, defina isLoggedIn como true
+    this.isLoggedIn = true;
+  }
+
 
 	showComponent(componentToShow: string): void {
     this.componentToShow = componentToShow;
