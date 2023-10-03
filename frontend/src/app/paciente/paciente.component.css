@@ -1,0 +1,27 @@
+.home {
+    background: #D9D9D9;
+    margin: auto;
+    max-width: 93%;
+    border-radius: 40px;
+    text-align: center;
+    min-height: 120px;
+}
+
+h1 {
+    font-size: large;
+    font-weight: 700;
+}
+
+.adicionar{
+    font-size: larger;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
