@@ -18,6 +18,8 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { ConsultaComponent } from './consulta/consulta.component';
 import { AgendaComponent } from './agenda/agenda.component';
 import { CadastroPacienteComponent } from './cadastro-paciente/cadastro-paciente.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CadastroPacienteComponent } from './cadastro-paciente/cadastro-paciente
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+        HttpClientModule
+
   ],
   providers: [AxiosService],
   bootstrap: [AppComponent]
