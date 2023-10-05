@@ -19,6 +19,8 @@ import { ConsultaComponent } from './consulta/consulta.component';
 import { AgendaComponent } from './agenda/agenda.component';
 import { CadastroPacienteComponent } from './cadastro-paciente/cadastro-paciente.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PacienteListComponent } from './paciente-list/paciente-list.component';
+import { FichaComponent } from './ficha/ficha.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     ConsultaComponent,
     AgendaComponent,
     CadastroPacienteComponent,
+    PacienteListComponent,
+    FichaComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ export interface ExameFisico {
 }
 
 export class Paciente {
+  idade:number = 0;
   id: number = 0;
   nome: string = '';
   dataNascimento: Date = new Date();

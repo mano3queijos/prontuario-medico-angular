@@ -8,10 +8,10 @@
       (onSubmitRegisterEvent)="onRegister($event)" /> 
 
   
- <app-navbar  *ngIf="isLoggedIn" ></app-navbar> 
-  <router-outlet *ngIf="isLoggedIn" ></router-outlet>
-  <app-welcome-content *ngIf="componentToShow == 'welcome'"/>
-	<app-auth-content *ngIf="componentToShow == 'messages'"/> 
+ <app-navbar  ></app-navbar> 
+  <router-outlet></router-outlet>
+  <!-- <app-welcome-content *ngIf="componentToShow == 'welcome'"/>
+	<app-auth-content *ngIf="componentToShow == 'messages'"/>  -->
 
 </div>
 <script src="../../assets/js/global.js"></script>

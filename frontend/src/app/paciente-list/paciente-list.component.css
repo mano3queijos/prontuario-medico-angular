@@ -1,0 +1,23 @@
+li{
+    list-style: none;
+}
+
+img{
+    width: 60px;
+}
+
+table, img, td{
+
+   background-color:#D9D9D9 ;
+}
+td{
+  
+    font-size: large;
+    
+}
+
+.line{
+    width: 100%;
+    margin: auto;
+    border: 1px solid #000000;
+}

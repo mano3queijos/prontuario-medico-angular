@@ -12,7 +12,27 @@ const baseUrl = 'http://localhost:8080/paciente';
 
 export class PacienteService {
 
+  private pacientes: any[] = [];
+
+
   constructor(private http: HttpClient) { }
+
+
+  //não me orgulho do que estou fazendo
+    adicionarPaciente(paciente: any): void {
+    this.pacientes.push(paciente);
+  }
+
+    obterPacientes(): any[] {
+    return this.pacientes;
+  }
+
+  obterPacientesPorId(id: number): void{
+
+        return this.pacientes.find((paciente) => paciente.id === id);
+
+    
+  }
 
   getAll(): Observable<Paciente[]> {
     return this.http.get<Paciente[]>(baseUrl);

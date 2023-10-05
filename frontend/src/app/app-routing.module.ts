@@ -5,7 +5,7 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { AgendaComponent } from './agenda/agenda.component';
 import { ConsultaComponent } from './consulta/consulta.component';
 import { CadastroPacienteComponent } from './cadastro-paciente/cadastro-paciente.component';
-
+import { FichaComponent } from './ficha/ficha.component';
 
 const routes: Routes = [
 
@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'agenda', component: AgendaComponent },
   { path: 'consulta', component: ConsultaComponent },
  { path: 'cadastro-paciente', component: CadastroPacienteComponent },
+ {path: 'ficha/:id', component : FichaComponent}
 
 ];
 

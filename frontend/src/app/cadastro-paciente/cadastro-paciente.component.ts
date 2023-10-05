@@ -2,11 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from '../paciente/shared/paciente';
 import { PacienteService } from '../paciente.service';
-import { Router } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { data } from 'jquery';
 
 export class AppModule {}
 
@@ -26,6 +21,7 @@ export class CadastroPacienteComponent implements OnInit {
 
   
  novoPaciente: Paciente = {
+  idade:0,
     id: 0, 
     nome: '',
     dataNascimento: new Date(),
@@ -70,9 +66,10 @@ export class CadastroPacienteComponent implements OnInit {
   ngOnInit(): void{  }
 
 savePaciente(): void {
-  console.log("qdfojqwe´0f0=")
+  
   const pacienteData = {
     nome: this.novoPaciente.nome,
+    idade: this.novoPaciente.idade,
     dataNascimento: this.novoPaciente.dataNascimento,
     raca: this.novoPaciente.raca,
     peso: this.novoPaciente.peso,
@@ -100,16 +97,25 @@ savePaciente(): void {
     comorbidades: [...this.novoPaciente.comorbidades],
     medicacaoEmUso: [...this.novoPaciente.medicacaoEmUso],
     evolucaoEnfermagem: this.novoPaciente.evolucaoEnfermagem,
+ 
+    
+ 
   };
 
-      this.pacienteService.create(pacienteData)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.submitted = true;
-        },
-        error: (e) => console.error(e)
-      });
+      // this.pacienteService.create(pacienteData)
+      // .subscribe({
+      //   next: (res) => {
+      //     console.log(res);
+      //     this.submitted = true;
+      //   },
+      //   error: (e) => console.error(e)
+      // });
+
+
+      this.pacienteService.adicionarPaciente(pacienteData);
+      this.submitted = true;
+      this.newPaciente(); 
+
 
 
 }
@@ -118,6 +124,7 @@ savePaciente(): void {
     this.submitted = false;
     this.novoPaciente = {
 
+      idade: 0,
       id: 0, 
     nome: '',
     dataNascimento: new Date(),
