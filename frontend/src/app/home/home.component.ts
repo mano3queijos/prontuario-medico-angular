@@ -37,8 +37,12 @@ atualizarDataHora() {
 }
 
 
-    obterNomeDoUsuario() {
-    this.axiosService.request('GET', '/api/usuario', null).then((response) => {
+  obterNomeDoUsuario() {
+    if(this.axiosService.getAuthToken() === null){
+      return;
+    }
+
+    this.axiosService.request('POST', '/auth/usuario', {id:this.axiosService.getAuthToken()} ).then((response) => {
       this.nomeDoUsuario = response.data.nome;
     }).catch((error) => {
       console.error('Erro ao obter informações do usuário:', error);

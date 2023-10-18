@@ -33,13 +33,13 @@ export class ContentComponent {
 		this.axiosService.request(
 
 		    "POST",
-		    "/login",
+		    "/auth/login",
 		    {
 		        login: input.login,
 		        password: input.password
 		    }).then(
 		    response => {
-		        this.axiosService.setAuthToken(response.data.token);
+		        this.axiosService.setAuthToken(response.data.id);
 		        this.componentToShow = "messages";
 		    }).catch(
 		    error => {
@@ -53,7 +53,7 @@ export class ContentComponent {
 	onRegister(input: any): void {
 		this.axiosService.request(
 		    "POST",
-		    "/register",
+		    "/auth/register",
 		    {
 		        firstName: input.firstName,
 		        lastName: input.lastName,
@@ -61,7 +61,7 @@ export class ContentComponent {
 		        password: input.password
 		    }).then(
 		    response => {
-		        this.axiosService.setAuthToken(response.data.token);
+		        this.axiosService.setAuthToken(response.data.id);
 		        this.componentToShow = "messages";
 		    }).catch(
 		    error => {
