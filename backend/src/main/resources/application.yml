@@ -2,11 +2,20 @@ security.jwt.token.secret-key: my-secret-key
 
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://davicoder.ddns.me/postgres
-    username: postgres
-    password: ProntuarioUCSAL2023
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://davicoder.ddns.me/postgres
+#    username: postgres
+#    password: ProntuarioUCSAL2023
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+
