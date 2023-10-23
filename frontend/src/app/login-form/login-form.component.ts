@@ -1,5 +1,4 @@
 import { EventEmitter, Component, Output } from '@angular/core';
-import { SharedService } from '../shared.service';
 
 
 @Component({

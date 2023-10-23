@@ -21,6 +21,8 @@ import { CadastroPacienteComponent } from './cadastro-paciente/cadastro-paciente
 import { HttpClientModule } from '@angular/common/http';
 import { PacienteListComponent } from './paciente-list/paciente-list.component';
 import { FichaComponent } from './ficha/ficha.component';
+import { SharedModule } from './shared/shared.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { FichaComponent } from './ficha/ficha.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-        HttpClientModule
+        HttpClientModule, 
+        SharedModule,MatDialogModule,
 
   ],
   providers: [AxiosService],

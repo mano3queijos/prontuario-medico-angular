@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
 import { AxiosService } from '../axios.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent {
+
+	 errorMessage: string = "";
 	componentToShow: string = "null";
 
-	constructor(private axiosService: AxiosService) { }
+	constructor(private axiosService: AxiosService,
+		public dialog: MatDialog) { }
 
 	showComponent(componentToShow: string): void {
     this.componentToShow = componentToShow;
@@ -30,11 +36,21 @@ export class ContentComponent {
 		    error => {
 		        this.axiosService.setAuthToken(null);
 		        this.componentToShow = "login";
+this.onError('Erro')
 		    }
 		);
 
 	}
 
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: 
+errorMsg
+	
+    });
+  }
+	
 	onRegister(input: any): void {
 		this.axiosService.request(
 		    "POST",
