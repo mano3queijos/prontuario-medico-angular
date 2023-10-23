@@ -36,8 +36,10 @@ export class ContentComponent {
 		    error => {
 		        this.axiosService.setAuthToken(null);
 		        this.componentToShow = "login";
-this.onError('Erro')
-		    }
+// this.onError(error)
+alert("aconteceu um")
+
+}
 		);
 
 	}
@@ -63,11 +65,11 @@ errorMsg
 		    }).then(
 		    response => {
 		        this.axiosService.setAuthToken(response.data.token);
-		        this.componentToShow = "messages";
+		        alert("registrado com susexo")
 		    }).catch(
 		    error => {
 		        this.axiosService.setAuthToken(null);
-		        this.componentToShow = "login";
+				alert("aconteceu algum erro")
 		    }
 		);
 	}
