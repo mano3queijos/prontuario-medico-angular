@@ -4,11 +4,13 @@
     (loginEvent)="showComponent('login')"
     (logoutEvent)="showComponent('welcome')"
   />
+  <app-welcome-content></app-welcome-content>
+
     <app-login-form *ngIf="componentToShow == 'login'" (onSubmitLoginEvent)="onLogin($event)"
-      (onSubmitRegisterEvent)="onRegister($event)" /> 
+      (onSubmitRegisterEvent)="onSubmitRegister($event)" /> 
 
   
- <app-navbar  ></app-navbar> 
+ <!-- <app-navbar  ></app-navbar>  -->
   <router-outlet></router-outlet>
   <!-- <app-welcome-content *ngIf="componentToShow == 'welcome'"/>
 	<app-auth-content *ngIf="componentToShow == 'messages'"/>  -->

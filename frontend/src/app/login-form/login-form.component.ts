@@ -1,51 +1,35 @@
-import { EventEmitter, Component, Output, Input } from '@angular/core';
+import { EventEmitter, Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css'],
-})
+  })
 export class LoginFormComponent {
+
   @Output() onSubmitLoginEvent = new EventEmitter();
-  @Output() loginEvent = new EventEmitter();
-  @Output() logoutEvent = new EventEmitter();
-  @Input() accessButtonVisible: boolean = true;
+  @Output() onSubmitRegisterEvent = new EventEmitter();
 
-  active: string = 'login';
-  login: string = '';
-  password: string = '';
-  loginError: string | null = null; // Adicione uma propriedade para a mensagem de erro
+	active: string = "login";
+  firstName: string = "";
+  lastName: string = "";
+  login: string = "";
+  password: string = "";
 
-  onLoginTab(): void {
-    this.active = 'login';
-  }
+	onLoginTab(): void {
+		this.active = "login";
+	}
 
-  onRegisterTab(): void {
-    this.active = 'register';
-  }
-
-  onExitButtonClick() {
-    // Emita o evento de logout
-    this.logoutEvent.emit();
-  }
+	onRegisterTab(): void {
+		this.active = "register";
+	}
 
   onSubmitLogin(): void {
-  
-    try {
-    // Emita o evento de login, incluindo credenciais
-    this.onSubmitLoginEvent.emit({ login: this.login, password: this.password });
-  } catch (error) {
-    // Se ocorrer uma exceção, trate-a aqui
-    console.error('Erro ao emitir o evento de login:', error);
-
-    // Defina a mensagem de erro com base na exceção
-    this.handleLoginError('Ocorreu um erro durante o login. Tente novamente.');
+    this.onSubmitLoginEvent.emit({"login": this.login, "password": this.password});
   }
 
+  onSubmitRegister(): void {
+    this.onSubmitRegisterEvent.emit({"firstName": this.firstName, "lastName": this.lastName, "login": this.login, "password": this.password});
   }
 
-  // Método para lidar com o erro de login
-  handleLoginError(errorMessage: string) {
-    this.loginError = errorMessage;
-  }
 }

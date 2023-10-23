@@ -44,13 +44,12 @@ export class ContentComponent {
 		    }).catch(
 		    error => {
 		        this.axiosService.setAuthToken(null);
-		        this.componentToShow = "ratumalaka";
 		    }
 		);
 
 	}
 
-	onRegister(input: any): void {
+	onSubmitRegister(input: any): void {
 		this.axiosService.request(
 		    "POST",
 		    "/auth/register",

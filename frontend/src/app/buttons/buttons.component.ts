@@ -12,8 +12,15 @@ export class ButtonsComponent {
 
   onAccessClick(): void {
     this.accessButtonVisible = !this.accessButtonVisible;
+    this.loginEvent.emit();// evento do login
+
+  }
   
-        this.loginEvent.emit();// evento do login
+  login(): void{
+    
+  }
+
+  changeVisibility(): void{
 
   }
 
