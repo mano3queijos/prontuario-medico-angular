@@ -1,4 +1,6 @@
 import { EventEmitter, Component, Output } from '@angular/core';
+import { SharedService } from '../shared.service';
+
 
 @Component({
   selector: 'app-login-form',
@@ -9,6 +11,8 @@ export class LoginFormComponent {
 
   @Output() onSubmitLoginEvent = new EventEmitter();
   @Output() onSubmitRegisterEvent = new EventEmitter();
+
+loginError: string | null = null;
 
 	active: string = "login";
   firstName: string = "";

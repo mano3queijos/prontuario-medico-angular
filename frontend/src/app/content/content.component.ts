@@ -7,31 +7,16 @@ import { AxiosService } from '../axios.service';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent {
+	componentToShow: string = "null";
 
-	  isLoggedIn: boolean = false;
-
-	componentToShow: string = "welcome";
-	constructor(private axiosService: AxiosService) { 
-		
-	
-	}
-	
-
-	handleLoginSuccess() {
-    // Lógica de verificação de login bem-sucedido
-    // Após a verificação bem-sucedida, defina isLoggedIn como true
-    this.isLoggedIn = true;
-  }
-
+	constructor(private axiosService: AxiosService) { }
 
 	showComponent(componentToShow: string): void {
     this.componentToShow = componentToShow;
   }
 
 	onLogin(input: any): void {
-		
 		this.axiosService.request(
-
 		    "POST",
 		    "/auth/login",
 		    {
@@ -39,17 +24,18 @@ export class ContentComponent {
 		        password: input.password
 		    }).then(
 		    response => {
-		        this.axiosService.setAuthToken(response.data.id);
-		        this.componentToShow = "messages";
+		        this.axiosService.setAuthToken(response.data.token);
+		        this.componentToShow = "navbar";
 		    }).catch(
 		    error => {
 		        this.axiosService.setAuthToken(null);
+		        this.componentToShow = "login";
 		    }
 		);
 
 	}
 
-	onSubmitRegister(input: any): void {
+	onRegister(input: any): void {
 		this.axiosService.request(
 		    "POST",
 		    "/auth/register",
@@ -60,15 +46,14 @@ export class ContentComponent {
 		        password: input.password
 		    }).then(
 		    response => {
-		        this.axiosService.setAuthToken(response.data.id);
+		        this.axiosService.setAuthToken(response.data.token);
 		        this.componentToShow = "messages";
 		    }).catch(
 		    error => {
 		        this.axiosService.setAuthToken(null);
-		        this.componentToShow = "welcome";
+		        this.componentToShow = "login";
 		    }
 		);
 	}
-	
 
 }

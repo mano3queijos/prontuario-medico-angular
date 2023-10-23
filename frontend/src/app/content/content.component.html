@@ -1,19 +1,12 @@
 <div>
+  <app-buttons (loginEvent)="showComponent('login')" (logoutEvent)="showComponent('welcome')" />
 
-  <app-buttons
-    (loginEvent)="showComponent('login')"
-    (logoutEvent)="showComponent('welcome')"
-  />
-  <app-welcome-content></app-welcome-content>
+  <app-welcome-content *ngIf="componentToShow == 'welcome'" />
+  <app-login-form *ngIf="componentToShow == 'login'" (onSubmitLoginEvent)="onLogin($event)"
+    (onSubmitRegisterEvent)="onRegister($event)" />
 
-    <app-login-form *ngIf="componentToShow == 'login'" (onSubmitLoginEvent)="onLogin($event)"
-      (onSubmitRegisterEvent)="onSubmitRegister($event)" /> 
+    <app-navbar *ngIf="componentToShow == 'navbar'" ></app-navbar>
 
-  
- <!-- <app-navbar  ></app-navbar>  -->
-  <router-outlet></router-outlet>
-  <!-- <app-welcome-content *ngIf="componentToShow == 'welcome'"/>
-	<app-auth-content *ngIf="componentToShow == 'messages'"/>  -->
+      <router-outlet *ngIf="componentToShow == 'navbar'"></router-outlet>
 
 </div>
-<script src="../../assets/js/global.js"></script>
