@@ -23,6 +23,7 @@ import { PacienteListComponent } from './paciente-list/paciente-list.component';
 import { FichaComponent } from './ficha/ficha.component';
 import { SharedModule } from './shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AdminViewComponent } from './admin-view/admin-view.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CadastroPacienteComponent,
     PacienteListComponent,
     FichaComponent,
+    AdminViewComponent,
   ],
   imports: [
     BrowserModule,

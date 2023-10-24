@@ -9,7 +9,7 @@ import { AxiosService } from '../axios.service';
 })
 export class HomeComponent {
 
-  nomeDoUsuario: string = 'Null';
+  nomeDoUsuario: string = '';
     consultas: any[] = [];
 
   dataHoraAtual: string = ''; 
@@ -35,19 +35,24 @@ atualizarDataHora() {
   };
   this.dataDoDia = dataAtual.toLocaleDateString('pt-BR', options);
 }
+obterNomeDoUsuario() {
+  const authToken = this.axiosService.getAuthToken();
 
+  if (authToken === null) {
+    return;
+  }
 
-  obterNomeDoUsuario() {
-    if(this.axiosService.getAuthToken() === null){
-      return;
-    }
+  const headers = { Authorization: `Bearer ${authToken}` };
 
-    this.axiosService.request('POST', '/auth/usuario', {id:this.axiosService.getAuthToken()} ).then((response) => {
-      this.nomeDoUsuario = response.data.nome;
-    }).catch((error) => {
+  this.axiosService.request('GET', '/auth/usuario/1' , null)
+    .then((response) => {
+      this.nomeDoUsuario = response.data.firstName;
+    })
+    .catch((error) => {
       console.error('Erro ao obter informações do usuário:', error);
     });
-  }
+}
+
 
   obterConsultasDoDia(){
 

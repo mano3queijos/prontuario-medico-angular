@@ -12,7 +12,7 @@ import { ErrorDialogComponent } from '../shared/components/error-dialog/error-di
 export class ContentComponent {
 
 	 errorMessage: string = "";
-	componentToShow: string = "null";
+	componentToShow: string = "welcome";
 
 	constructor(private axiosService: AxiosService,
 		public dialog: MatDialog) { }
@@ -65,7 +65,8 @@ errorMsg
 		    }).then(
 		    response => {
 		        this.axiosService.setAuthToken(response.data.token);
-		        alert("registrado com susexo")
+		        this.componentToShow = "welcome";				alert("registrado com susexo")
+
 		    }).catch(
 		    error => {
 		        this.axiosService.setAuthToken(null);
