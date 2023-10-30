@@ -1,59 +1,31 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ButtonsComponent } from './buttons/buttons.component';
-import { HeaderComponent } from './header/header.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { WelcomeContentComponent } from './welcome-content/welcome-content.component';
-import { AuthContentComponent } from './auth-content/auth-content.component';
-import { ContentComponent } from './content/content.component';
-
-import { AxiosService } from './axios.service';
+import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { PacienteComponent } from './paciente/paciente.component';
-import { ConsultaComponent } from './consulta/consulta.component';
-import { AgendaComponent } from './agenda/agenda.component';
-import { CadastroPacienteComponent } from './cadastro-paciente/cadastro-paciente.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PacienteListComponent } from './paciente-list/paciente-list.component';
-import { FichaComponent } from './ficha/ficha.component';
-import { SharedModule } from './shared/shared.module';
-import { MatDialogModule } from '@angular/material/dialog';
-import { AdminViewComponent } from './admin-view/admin-view.component';
-
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ButtonsComponent,
-    HeaderComponent,
-    LoginFormComponent,
-    WelcomeContentComponent,
-    AuthContentComponent,
-    ContentComponent,
-    NavbarComponent,
-    HomeComponent,
-    PacienteComponent,
-    ConsultaComponent,
-    AgendaComponent,
-    CadastroPacienteComponent,
-    PacienteListComponent,
-    FichaComponent,
-    AdminViewComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-        HttpClientModule, 
-        SharedModule,MatDialogModule,
-
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    NgbModule,
+    MdbCheckboxModule,FormsModule
   ],
-  providers: [AxiosService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
+

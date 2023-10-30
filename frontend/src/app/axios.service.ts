@@ -23,21 +23,31 @@ export class AxiosService {
     }
   }
 
+  isAuthenticated(): boolean {
+    const authToken = this.getAuthToken(); // Chame a função para obter o token JWT
+    return !!authToken; // Verifique se authToken existe e não é nulo
+  }
+
+
+  logout(): void {
+    this.setAuthToken(null);
+  }
+
 
   request(method: string, url: string, data: any): Promise<any> {
-      let headers: any = {};
+    let headers: any = {};
 
-      if (this.getAuthToken() !== null) {
-          headers = {"Authorization": "Bearer " + this.getAuthToken()};
-                  console.log("Token:", this.getAuthToken()); // Adicione esta linha para imprimir o token
+    if (this.getAuthToken() !== null) {
+      headers = { "Authorization": "Bearer " + this.getAuthToken() };
+      console.log("Token:", this.getAuthToken()); // Adicione esta linha para imprimir o token
 
-      }
+    }
 
-      return axios({
-          method: method,
-          url: url,
-          data: data,
-          headers: headers
-      });
+    return axios({
+      method: method,
+      url: url,
+      data: data,
+      headers: headers
+    });
   }
 }

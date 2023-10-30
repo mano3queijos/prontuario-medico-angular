@@ -1,0 +1,123 @@
+.btn{
+    background-color: #4A6B83;
+    border: none;
+    color: aliceblue;
+}
+.btn:hover{
+    color: #4A6B83;
+    background-color: rgb(203, 203, 203);
+}
+.nav-link.active {
+    background-color: #4A6B83;
+    color: #fff;
+
+}
+.nav-link{
+    color: black ;
+}
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+body {
+    background:url("../../assets/images/atendimento.png")  no-repeat ;
+    background-size: cover;
+    font-family: monospace;
+}
+
+a {
+    color: #4A6B83;
+    text-decoration: none;
+    font-size:x-small;
+    padding-left: 100px;
+}
+
+a:hover{
+    color: #000000;
+}
+
+
+
+nav.navbar {
+    background:#4A6B83 ;
+    }
+
+.navbar-collapse {
+    transition: height 0.5s ease-out;
+}
+
+
+
+form {
+    width: 360px;
+    padding: 4% 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+    max-width: 360px;
+    border-radius: 10%;
+    margin: 0 auto 50px;
+    padding: 45px;
+    text-align: center;
+}
+
+.form input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    border-radius: 7px;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    border-radius: 10px;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
+    background: #43A047;
+}
+
+
+@media (max-width: 765px) {
+    .mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);

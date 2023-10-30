@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/paciente")
 public class PacienteController {
-    @Autowired
-    private PacienteService pacienteService;
+        @Autowired
+        private PacienteService pacienteService;
 
-    @GetMapping
-    public ResponseEntity<Page<PacienteDto>> buscarTodos (@PageableDefault(size = 10) Pageable paginacao) {
-        var page = pacienteService.listarTodos(paginacao).map(PacienteDto::new);
-        return ResponseEntity.ok(page);
-    }
+        @GetMapping
+        public ResponseEntity<Page<PacienteDto>> buscarTodos (@PageableDefault(size = 10) Pageable paginacao) {
+            var page = pacienteService.listarTodos(paginacao).map(PacienteDto::new);
+            return ResponseEntity.ok(page);
+        }
 
-    @GetMapping("/{id}")
+        @GetMapping("/{id}")
     public ResponseEntity<PacienteDto> buscarPorId (@PathVariable Long id) {
         Paciente paciente = pacienteService.buscarPorId(id);
         return ResponseEntity.ok(new PacienteDto(paciente));

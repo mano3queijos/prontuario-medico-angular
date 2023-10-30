@@ -1,13 +1,17 @@
-<div>
-  <app-header [unienfLogo]="'assets/images/unienfLogo.png'" [logoUcsal]="'assets/images/logoUcsal.png'" />
+<mat-toolbar class="">
   <div class="container-fluid">
-    <div class="container">
-    <div class="row">
-      <div class="col">
-        <app-content />
-      </div>
-    </div>
-    </div>
+    <a href="http://localhost:4200">
+      <img class="img-fluid img1" src="{{ logoUcsal }}" alt="Logo UCSAL" />
+    </a>
   </div>
-</div>
 
+  <h1 class="h1-header mx-auto text-center">Sistema de Prontuário Médico</h1>
+</mat-toolbar>
+
+<app-login *ngIf="!isAuthenticated()"></app-login>
+
+<p class="mb-5"></p>
+
+<app-navbar *ngIf="isAuthenticated()"></app-navbar>
+
+<router-outlet></router-outlet>
