@@ -7,15 +7,14 @@
     min-height: 70px;
 }
 
-.nav-link {
-    color: white !important;
-    font-size: 20px;
+.btn {
     margin-left: 20px;
     margin-right: 20px;
+    font-size: 20px;
 
 }
 .nav-link:hover{
-    color: aqua !important;
+    color: rgb(0, 0, 0) !important;
 }
 
 .navbar-collapse {

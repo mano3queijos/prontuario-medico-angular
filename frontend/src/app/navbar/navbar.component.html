@@ -3,7 +3,6 @@
     <div class="order-lg-2"></div>
     <div class="navbar-collapse justify-content-center">
       <ul class="navbar-nav ml-auto">
-        <!-- Use a classe "ml-auto" para alinhar à direita -->
         <li class="nav-item">
           <a
             class="nav-link nav-link-custom"
@@ -17,12 +16,12 @@
               [attr.aria-expanded]="isActive('paginaInicial')"
               aria-controls="collapseExample1"
             >
-              Pagina inicial
-            </button></a
-          >
+              Página Inicial
+            </button>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" routerLink="/paciente" href="#">
+          <a class="nav-link nav-link-custom" routerLink="/paciente">
             <button
               type="button"
               class="btn btn btn-outline-light ms-2 border-0"
@@ -35,38 +34,37 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" routerLink="/consulta" href="#">
+          <a class="nav-link nav-link-custom" routerLink="/consulta">
             <button
               type="button"
               class="btn btn btn-outline-light ms-2 border-0"
               (click)="toggleCollapse('consulta')"
               [attr.aria-expanded]="isActive('consulta')"
-              aria-controls="collapseExample2"
+              aria-controls="collapseExample3"
             >
               Consulta
-            </button></a
-          >
+            </button>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" routerLink="/agenda" href="#">
+          <a class="nav-link nav-link-custom" routerLink="/agenda">
             <button
               type="button"
               class="btn btn btn-outline-light ms-2 border-0"
               (click)="toggleCollapse('agenda')"
               [attr.aria-expanded]="isActive('agenda')"
-              aria-controls="collapseExample2"
+              aria-controls="collapseExample4"
             >
               Agenda
-            </button></a
-          >
+            </button>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" routerLink="/agenda" href="#">
+          <a class="nav-link nav-link-custom" routerLink="/agenda">
             <button
               type="button"
               class="btn btn btn-outline-danger ms-2 border-0"
               *ngIf="isAuthenticated()"
-              mat-button
               (click)="logout()"
             >
               Logout
