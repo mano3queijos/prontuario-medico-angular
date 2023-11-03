@@ -19,25 +19,25 @@ public class PacienteController {
         @Autowired
         private PacienteService pacienteService;
 
-        @GetMapping
-        public ResponseEntity<Page<PacienteDto>> buscarTodos (@PageableDefault(size = 10) Pageable paginacao) {
-            var page = pacienteService.listarTodos(paginacao).map(PacienteDto::new);
-            return ResponseEntity.ok(page);
-        }
-
-        @GetMapping("/{id}")
-    public ResponseEntity<PacienteDto> buscarPorId (@PathVariable Long id) {
-        Paciente paciente = pacienteService.buscarPorId(id);
-        return ResponseEntity.ok(new PacienteDto(paciente));
-    }
-
-    @PostMapping("/cadastrar")
-    @Transactional
-    public ResponseEntity<PacienteDto> cadastrarPaciente(@RequestBody @Valid PacienteDto pacienteDto) {
-        Paciente paciente = pacienteService.register(new Paciente(pacienteDto));
-        return ResponseEntity.status(HttpStatus.CREATED).body(new PacienteDto(paciente));
-    }
-
+//        @GetMapping
+//        public ResponseEntity<Page<PacienteDto>> buscarTodos (@PageableDefault(size = 10) Pageable paginacao) {
+//            var page = pacienteService.listarTodos(paginacao).map(PacienteDto::new);
+//            return ResponseEntity.ok(page);
+//        }
+//
+//        @GetMapping("/{id}")
+//    public ResponseEntity<PacienteDto> buscarPorId (@PathVariable Long id) {
+//        Paciente paciente = pacienteService.buscarPorId(id);
+//        return ResponseEntity.ok(new PacienteDto(paciente));
+//    }
+//
+//    @PostMapping("/cadastrar")
+//    @Transactional
+//    public ResponseEntity<PacienteDto> cadastrarPaciente(@RequestBody @Valid PacienteDto pacienteDto) {
+//        Paciente paciente = pacienteService.register(new Paciente(pacienteDto));
+//        return ResponseEntity.status(HttpStatus.CREATED).body(new PacienteDto(paciente));
+//    }
+//
 
 //    @PutMapping("/atualizar/{id}")
 //    @Transactional

@@ -15,12 +15,12 @@ public record PacienteDto(@Valid @NotNull FichaCadastralDto fichaCadastralDto, @
                           String telefone, @NotNull String raca, @NotNull Double peso, @NotNull String curso,
                           @NotNull Integer altura, @NotNull String email, @Valid @NotNull RegistroMedicoDto registroMedicoDto) {
     private static UserMapper userMapper;
-    public PacienteDto(Paciente paciente) {
-        this(userMapper.toFichaCadastralDto(paciente.getFichaCadastral()), paciente.getNome(), paciente.getCpf(),
-                paciente.getDataNasc(), userMapper.toEnderecoDto(paciente.getEndereco()), paciente.getTelefone(),
-                paciente.getRaca(), paciente.getPeso(), paciente.getCurso(),
-                paciente.getAltura(), paciente.getEmail(), userMapper.toRegistroMedicoDto(paciente.getRegistroMedico()));
-    }
+//    public PacienteDto(Paciente paciente) {
+//        this(userMapper.toFichaCadastralDto(paciente.getFichaCadastral()), paciente.getNome(), paciente.getCpf(),
+//                paciente.getDataNasc(), userMapper.toEnderecoDto(paciente.getEndereco()), paciente.getTelefone(),
+//                paciente.getRaca(), paciente.getPeso(), paciente.getCurso(),
+//                paciente.getAltura(), paciente.getEmail(), userMapper.toRegistroMedicoDto(paciente.getRegistroMedico()));
+//    }
 }
 
 

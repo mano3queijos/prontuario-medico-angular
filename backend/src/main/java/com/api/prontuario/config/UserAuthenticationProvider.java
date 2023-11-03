@@ -43,8 +43,7 @@ public class UserAuthenticationProvider {
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
                 .withClaim("userId", user.getId()) //id do usuario
-                .withClaim("firstName", user.getFirstName())
-                .withClaim("lastName", user.getLastName())
+
                 .sign(algorithm);
     }
 
@@ -58,8 +57,7 @@ public class UserAuthenticationProvider {
 
         UserDto user = UserDto.builder()
                 .login(decoded.getSubject())
-                .firstName(decoded.getClaim("firstName").asString())
-                .lastName(decoded.getClaim("lastName").asString())
+
                 .build();
 
         return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
