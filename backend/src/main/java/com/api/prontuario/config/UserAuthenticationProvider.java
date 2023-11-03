@@ -42,8 +42,7 @@ public class UserAuthenticationProvider {
                 .withSubject(user.getLogin())
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
-                .withClaim("userId", user.getId()) //id do usuario
-
+                .withClaim("userId", user.getId())
                 .sign(algorithm);
     }
 
