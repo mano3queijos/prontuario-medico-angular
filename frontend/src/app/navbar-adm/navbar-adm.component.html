@@ -1,1 +1,84 @@
-<p>navbar-adm works!</p>
+<nav class="navbar navbar-expand-lg navbar-light navbar-home">
+  <div class="container-fluid">
+    <div class="order-lg-2"></div>
+    <div class="navbar-collapse justify-content-center">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-custom"
+            aria-current="page"
+            routerLink="/home"
+          >
+            <button
+              type="button"
+              class="btn btn btn-outline-light ms-2 border-0"
+              (click)="toggleCollapse('paginaInicial')"
+              [attr.aria-expanded]="isActive('paginaInicial')"
+              aria-controls="collapseExample1"
+            >
+              Página Inicial
+            </button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/medico">
+            <button
+              type="button"
+              class="btn btn btn-outline-light ms-2 border-0"
+              (click)="toggleCollapse('Medicos')"
+              [attr.aria-expanded]="isActive('Medicos')"
+              aria-controls="collapseExample2"
+            >
+              Medicos
+            </button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" routerLink="/adm">
+            <button
+              type="button"
+              class="btn btn btn-outline-light ms-2 border-0"
+              (click)="toggleCollapse('Adms')"
+              [attr.aria-expanded]="isActive('Adms')"
+              aria-controls="collapseExample3"
+            >
+              Adms
+            </button>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom">
+            <button
+              type="button"
+              class="btn btn btn-outline-danger ms-2 border-0"
+              *ngIf="isAuthenticated()"
+              (click)="logout()"
+            >
+              Logout
+            </button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<p>
+  <!-- Conteúdo da barra de logout aqui -->
+</p>
+
+<div #collapse1="ngbCollapse" [ngbCollapse]="!isActive('collapse1')">
+  <div class="card">
+    <div class="card-body">
+      You can collapse this card by clicking the first Toggle button
+    </div>
+  </div>
+</div>
+<div #collapse2="ngbCollapse" [ngbCollapse]="!isActive('collapse2')">
+  <div class="card">
+    <div class="card-body">
+      You can collapse this card by clicking the second Toggle button
+    </div>
+  </div>
+</div>

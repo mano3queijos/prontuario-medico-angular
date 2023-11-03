@@ -1,0 +1,22 @@
+ .navbar-home {
+    background: #4A6B83;
+    margin: auto;
+    max-width: 76%;
+    border-radius: 20px;
+    text-align: center;
+    min-height: 70px;
+}
+
+.btn {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+
+}
+.nav-link:hover{
+    color: rgb(0, 0, 0) !important;
+}
+
+.navbar-collapse {
+    transition: height 0.5s ease-out;
+}
