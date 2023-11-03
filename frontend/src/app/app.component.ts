@@ -18,7 +18,20 @@ export class AppComponent {
 
 
   isAuthenticated(): boolean {
+
     return this.AxiosService.isAuthenticated();
+
   }
+
+  isAdm(): boolean {
+
+    return this.AxiosService.getRole()?.role == "ADMIN" ? true : false;
+  }
+  isMedico(): boolean {
+
+    return this.AxiosService.getRole()?.role == "MEDICO" ? true : false;
+  }
+
+
 
 }

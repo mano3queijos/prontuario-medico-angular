@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import * as jwt from 'jsonwebtoken';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,22 @@ export class AxiosService {
 
   getAuthToken(): string | null {
     return window.localStorage.getItem("auth_token");
+
   }
+
+  getRole(): { username: string, role: string } | null {
+    const token = this.getAuthToken();
+    if (token) {
+      const payload = token.split('.')[1];
+      const decodedPayload = JSON.parse(atob(payload));
+      return {
+        username: decodedPayload.username,
+        role: decodedPayload.role
+      };
+    }
+    return null;
+  }
+
 
   setAuthToken(token: string | null): void {
     if (token !== null) {
@@ -22,6 +38,7 @@ export class AxiosService {
       window.localStorage.removeItem("auth_token");
     }
   }
+
 
   isAuthenticated(): boolean {
     const authToken = this.getAuthToken(); // Chame a função para obter o token JWT

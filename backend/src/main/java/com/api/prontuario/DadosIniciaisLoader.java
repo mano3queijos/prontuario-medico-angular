@@ -30,7 +30,7 @@ public class DadosIniciaisLoader implements CommandLineRunner {
             user.setNome("emanuel");
             user.setCpf("123.456.789-00");
             user.setTelefone("(11) 5555-5555");
-            user.setRole(Role.MEDICO);
+            user.setRole(Role.ADMIN);
             user.setLogin("emanuel");
             // Você deve criptografar a senha antes de salvar no banco
             user.setPassword(passwordEncoder.encode(CharBuffer.wrap("Almeida")));

@@ -43,6 +43,8 @@ public class UserAuthenticationProvider {
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
                 .withClaim("userId", user.getId())
+                .withClaim("role", user.getRole().name()) // Adicione a função (role) aqui
+
                 .sign(algorithm);
     }
 

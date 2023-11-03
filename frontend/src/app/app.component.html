@@ -12,6 +12,8 @@
 
 <p class="mb-5"></p>
 
-<app-navbar *ngIf="isAuthenticated()"></app-navbar>
+<app-navbar *ngIf="isAuthenticated() && isMedico()"></app-navbar>
+
+<app-navbar-adm *ngIf="isAuthenticated() && isAdm()"></app-navbar-adm>
 
 <router-outlet></router-outlet>
