@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import * as jwt from 'jsonwebtoken';
+// import * as jwt from 'jsonwebtoken';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class AxiosService {
       const payload = token.split('.')[1];
       const decodedPayload = JSON.parse(atob(payload));
       return {
-        username: decodedPayload.username,
+        username: decodedPayload.nome,
         role: decodedPayload.role
       };
     }

@@ -1,5 +1,5 @@
-import { AxiosService } from './axios.service';
 import { Component, Input } from '@angular/core';
+import { AxiosService } from './axios.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
