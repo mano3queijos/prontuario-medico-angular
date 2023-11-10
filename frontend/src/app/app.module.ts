@@ -13,9 +13,11 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarAdmComponent } from './navbar-adm/navbar-adm.component';
+import { MedicoComponent } from './medico/medico.component';
+import { AdmsComponent } from './adms/adms.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, NavbarComponent, HomeComponent, NavbarAdmComponent],
+  declarations: [AppComponent, LoginComponent, NavbarComponent, HomeComponent, NavbarAdmComponent, MedicoComponent, AdmsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Medico extends Pessoa {
+public class Medico extends User {
     private String crm;
     private String especialidade;
 }
