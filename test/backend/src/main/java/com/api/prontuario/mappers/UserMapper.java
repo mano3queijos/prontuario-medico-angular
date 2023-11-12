@@ -9,8 +9,6 @@ import org.mapstruct.Mapping;
 public interface UserMapper {
 
     UserDto toUserDto(User user);
-
-
     MedicoDto toMedicoDto(Medico medico);
     FichaCadastralDto toFichaCadastralDto(FichaCadastral fichaCadastral);
     RegistroMedicoDto toRegistroMedicoDto(RegistroMedico registroMedico);

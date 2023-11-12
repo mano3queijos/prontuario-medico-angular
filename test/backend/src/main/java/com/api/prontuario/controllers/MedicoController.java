@@ -40,9 +40,10 @@ public class MedicoController {
 
     @PostMapping("/register")
     public ResponseEntity<MedicoDto> register(@RequestBody @Valid SingUpMedicoDto medico) {
-        MedicoDto medicoDto = medicoService.register(medico);
-        medicoDto.setToken(userAuthenticationProvider.createToken(medicoDto));
-        return ResponseEntity.created(URI.create("/medicos/" + medicoDto.getId())).body(medicoDto);
+        MedicoDto createdMedico = medicoService.register(medico);
+//        createdMedico.setToken(userAuthenticationProvider.createToken(createdMedico));
+// acho que não vai precisar desse cara
+        return ResponseEntity.created(URI.create("/medicos/" + createdMedico.getId())).body(createdMedico);
     }
 
 

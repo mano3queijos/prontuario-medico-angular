@@ -33,32 +33,26 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<UserDto> register(@RequestBody @Valid SignUpUserDto user) {
-        UserDto userDto = userService.register(user);
 
-        userDto.setToken(userAuthenticationProvider.createToken(userDto));
 
-        return ResponseEntity.created(URI.create("/users/" + userDto.getId())).body(userDto);
+        UserDto createdUser = userService.register(user);
+//        createdUser.setToken(userAuthenticationProvider.createToken(createdUser));
+// acho que não vai precisar desse cara
+        return ResponseEntity.created(URI.create("/users/" + createdUser.getId())).body(createdUser);
+
     }
 
-
-
-
     @GetMapping("/users")
-    public List<UserDto> usuario () {
+    public  List<UserDto> usuario () {
 
         List<UserDto> users = userService.findAlldUsers();
 
         return ResponseEntity.ok(users).getBody();
     }
 
-
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<UserDto> usuarioPorId (@PathVariable Long id) {
-        User user = userService.findById(id);
+    public ResponseEntity<UserDto> usuarioPorId (@PathVariable String id) {
+        User user = userService.findByLogin(id);
         return ResponseEntity.ok(userMapper.toUserDto(user));
     }
-
-
-
-
 }

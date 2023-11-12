@@ -1,6 +1,5 @@
 package com.api.prontuario.services;
 
-import com.api.prontuario.config.UserAuthenticationProvider;
 import com.api.prontuario.dtos.CredentialsDto;
 import com.api.prontuario.dtos.SignUpUserDto;
 import com.api.prontuario.dtos.UserDto;
@@ -16,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.CharBuffer;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -45,25 +46,29 @@ public class UserService {
         throw new AppException("Invalid password", HttpStatus.BAD_REQUEST);
     }
 
+
+
     public UserDto register(SignUpUserDto userDto) {
         Optional<User> optionalUser = userRepository.findByLogin(userDto.login());
 
         if (optionalUser.isPresent()) {
             throw new AppException("Login já existente", HttpStatus.BAD_REQUEST);
         }
-
         List<String> invalidos = validar.validarCamposNulos(userDto);
 
         if (!invalidos.isEmpty()) {
             throw new AppException("Campos inválidos: " + String.join(", ", invalidos), HttpStatus.BAD_REQUEST);
         }
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        LocalDate dataNascimento = LocalDate.parse(userDto.dataNascimento(), formatter);
+
 
         User user = userMapper.signUpToUser(userDto);
         user.setPassword(passwordEncoder.encode(CharBuffer.wrap(userDto.password())));
         user.setRole(Role.ADMIN);
         User savedUser = userRepository.save(user);
-
+//        user.setDataNascimento(dataNascimento);
         return userMapper.toUserDto(savedUser);
     }
 
@@ -73,11 +78,6 @@ public class UserService {
         return user;
     }
 
-    public User findById(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
-        return user;
-    }
     public List<UserDto> findAlldUsers() {
         List<User> users = userRepository.findAll();
 //acho que retorna uma liosta vazia se não encontrar ninguem
@@ -85,6 +85,7 @@ public class UserService {
                 .map(userMapper::toUserDto)
                 .collect(Collectors.toList());
     }
+
 
 
 }
