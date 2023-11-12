@@ -1,23 +1,20 @@
 package com.api.prontuario.services;
 
 import com.api.prontuario.dtos.CredentialsDto;
-import com.api.prontuario.dtos.SignUpDto;
+import com.api.prontuario.dtos.SignUpUserDto;
 import com.api.prontuario.dtos.UserDto;
 import com.api.prontuario.entites.User;
+import com.api.prontuario.enums.Role;
 import com.api.prontuario.infra.exceptions.AppException;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.repositories.UserRepository;
-import com.api.prontuario.validators.ValidarCamposNulos;
-import com.api.prontuario.validators.Validacao;
 import com.api.prontuario.validators.ValidarCamposNulos;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 import java.nio.CharBuffer;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +43,7 @@ public class UserService {
         throw new AppException("Invalid password", HttpStatus.BAD_REQUEST);
     }
 
-    public UserDto register(SignUpDto userDto) {
+    public UserDto register(SignUpUserDto userDto) {
         Optional<User> optionalUser = userRepository.findByLogin(userDto.login());
 
         if (optionalUser.isPresent()) {
@@ -62,7 +59,7 @@ public class UserService {
 
         User user = userMapper.signUpToUser(userDto);
         user.setPassword(passwordEncoder.encode(CharBuffer.wrap(userDto.password())));
-
+        user.setRole(Role.ADMIN);
         User savedUser = userRepository.save(user);
 
         return userMapper.toUserDto(savedUser);

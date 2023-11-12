@@ -19,4 +19,6 @@ public class User extends Pessoa {
     private Role role;
     private String login;
     private String password;
+
+
 }

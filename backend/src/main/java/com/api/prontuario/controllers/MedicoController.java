@@ -1,30 +1,28 @@
 package com.api.prontuario.controllers;
 
+import com.api.prontuario.config.UserAuthenticationProvider;
 import com.api.prontuario.dtos.MedicoDto;
-import com.api.prontuario.dtos.PacienteDto;
-import com.api.prontuario.dtos.SignUpDto;
-import com.api.prontuario.dtos.UserDto;
+import com.api.prontuario.dtos.SignUpUserDto;
+import com.api.prontuario.dtos.SingUpMedicoDto;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.services.MedicoService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/medico")
 public class MedicoController {
 
-    @Autowired
-    private MedicoService medicoService;
+    private final MedicoService medicoService;
+    private final  UserAuthenticationProvider userAuthenticationProvider;
+    private final UserMapper userMapper;
 
-    private UserMapper userMapper;
 
     @GetMapping("/dadosbase/{id}")
     public ResponseEntity<MedicoDto> buscarPorId(Long id) {
@@ -40,12 +38,11 @@ public class MedicoController {
     }
 
 
-//    ajeitar
     @PostMapping("/register")
-    public ResponseEntity<MedicoDto> register(@RequestBody @Valid SignUpDto medico) {
+    public ResponseEntity<MedicoDto> register(@RequestBody @Valid SingUpMedicoDto medico) {
         MedicoDto createdMedico = medicoService.register(medico);
-        createdMedico.setToken(userAuthenticationProvider.createToken(createdUser));
-        return ResponseEntity.created(URI.create("/users/" + createdUser.getId())).body(createdUser);
+        createdMedico.setToken(userAuthenticationProvider.createToken(createdMedico));
+        return ResponseEntity.created(URI.create("/medicos/" + createdMedico.getId())).body(createdMedico);
     }
 
 

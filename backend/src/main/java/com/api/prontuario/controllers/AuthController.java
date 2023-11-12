@@ -1,8 +1,7 @@
 package com.api.prontuario.controllers;
 
 import com.api.prontuario.config.UserAuthenticationProvider;
-import com.api.prontuario.dtos.PacienteDto;
-import com.api.prontuario.dtos.SignUpDto;
+import com.api.prontuario.dtos.SignUpUserDto;
 import com.api.prontuario.entites.User;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.services.UserService;
@@ -10,13 +9,10 @@ import com.api.prontuario.dtos.CredentialsDto;
 import com.api.prontuario.dtos.UserDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.nio.CharBuffer;
 
 @RequiredArgsConstructor
 @RestController
@@ -35,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> register(@RequestBody @Valid SignUpDto user) {
+    public ResponseEntity<UserDto> register(@RequestBody @Valid SignUpUserDto user) {
         UserDto createdUser = userService.register(user);
         createdUser.setToken(userAuthenticationProvider.createToken(createdUser));
         return ResponseEntity.created(URI.create("/users/" + createdUser.getId())).body(createdUser);
