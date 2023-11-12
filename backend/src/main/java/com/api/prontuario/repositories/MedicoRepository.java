@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
-//    Optional<Medico> findByLogin(String login);
+    Optional<Medico> findByLogin(String login);
 }

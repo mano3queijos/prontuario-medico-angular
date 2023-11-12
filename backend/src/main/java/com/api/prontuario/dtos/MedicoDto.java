@@ -19,6 +19,4 @@ public class MedicoDto {
     private String cpf;
     private Date dataNasc;
 
-    public MedicoDto(Medico medico) {
-    }
 }

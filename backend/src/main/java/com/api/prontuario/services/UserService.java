@@ -7,6 +7,7 @@ import com.api.prontuario.entites.User;
 import com.api.prontuario.infra.exceptions.AppException;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.repositories.UserRepository;
+import com.api.prontuario.validators.ValidarCamposNulos;
 import com.api.prontuario.validators.Validacao;
 import com.api.prontuario.validators.ValidarCamposNulos;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class UserService {
 
     private final UserMapper userMapper;
 
-
+    ValidarCamposNulos validar = new ValidarCamposNulos();
 
 
     public UserDto login(CredentialsDto credentialsDto) {
@@ -49,10 +50,10 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findByLogin(userDto.login());
 
         if (optionalUser.isPresent()) {
-            throw new AppException("Login already exists", HttpStatus.BAD_REQUEST);
+            throw new AppException("Login já existente", HttpStatus.BAD_REQUEST);
         }
 
-        List<String> invalidos = validarCamposNulos(userDto);
+        List<String> invalidos = validar.validarCamposNulos(userDto);
 
         if (!invalidos.isEmpty()) {
             throw new AppException("Campos inválidos: " + String.join(", ", invalidos), HttpStatus.BAD_REQUEST);
@@ -79,26 +80,4 @@ public class UserService {
         return user;
     }
 
-    private List<String> validarCamposNulos(Object objeto) {
-        List<String> invalidos = new ArrayList<>();
-        Class<?> classe = objeto.getClass();
-        Field[] atributos = classe.getDeclaredFields();
-
-        for (Field atributo : atributos) {
-            atributo.setAccessible(true);
-            Object valor;
-            try {
-                valor = atributo.get(objeto);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException("Erro ao acessar o campo", e);
-            }
-
-            if (valor == null && atributo.isAnnotationPresent(Validacao.class)) {
-                Validacao validacao = atributo.getAnnotation(Validacao.class);
-                invalidos.add(validacao.descricao());
-            }
-        }
-
-        return invalidos;
-
-}}
+}

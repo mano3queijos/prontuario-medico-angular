@@ -1,6 +1,5 @@
 package com.api.prontuario.validators;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,28 +9,27 @@ import java.util.List;
 
 public class ValidarCamposNulos {
 
-    public static List<String> validarCamposNulos(Object objeto) throws IllegalAccessException {
-        List<String> invalidos = new ArrayList<>();
+
+    public List<String> validarCamposNulos(Object objeto) {
         Class<?> classe = objeto.getClass();
         Field[] atributos = classe.getDeclaredFields();
-
-
+        List<String> invalidos = new ArrayList<>();
         for (Field atributo : atributos) {
             atributo.setAccessible(true);
-            Object valor = atributo.get(objeto);
+            Object valor;
+            try {
+                valor = atributo.get(objeto);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException("Erro ao acessar o campo", e);
+            }
 
-            if (valor == null) {
-                if (atributo.isAnnotationPresent(Validacao.class)) {
-                    Annotation[] annotations = atributo.getAnnotationsByType(Validacao.class);
-
-                    for (Annotation annotation : annotations) {
-                        Validacao validacao = (Validacao) annotation;
-                        invalidos.add(validacao.descricao());
-                    }
-                }
+            if (valor == null && atributo.isAnnotationPresent(Validacao.class)) {
+                Validacao validacao = atributo.getAnnotation(Validacao.class);
+               invalidos.add(validacao.descricao());
             }
         }
 
         return invalidos;
+
     }
 }
