@@ -4,6 +4,7 @@ import com.api.prontuario.config.UserAuthenticationProvider;
 import com.api.prontuario.dtos.MedicoDto;
 import com.api.prontuario.dtos.SignUpUserDto;
 import com.api.prontuario.dtos.SingUpMedicoDto;
+import com.api.prontuario.dtos.UserDto;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.services.MedicoService;
 import jakarta.validation.Valid;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/medico")
@@ -36,6 +39,16 @@ public class MedicoController {
         medicoService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+
+    @GetMapping("/medicos")
+    public List<MedicoDto> usuario () {
+
+        List<MedicoDto> medicos = medicoService.findAllMedicos();
+
+        return ResponseEntity.ok(medicos).getBody();
+    }
+
 
 
     @PostMapping("/register")

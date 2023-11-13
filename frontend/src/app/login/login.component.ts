@@ -18,7 +18,7 @@ export class LoginComponent {
 
   login: string = "";
   password: string = "";
-  erroMsg: string = "";
+  errorMsg: string = "";
 
   onSubmitLogin(): void {
     this.axiosService.request(
@@ -34,7 +34,7 @@ export class LoginComponent {
         }).catch(
           error => {
             this.axiosService.setAuthToken(null);
-            this.erroMsg = "Ocorreu um erro: " + error.message;
+            this.errorMsg = "Ocorreu um erro: " + error.message;
           }
         );
 

@@ -20,6 +20,9 @@ public interface UserMapper {
 
     @Mapping(target = "password", ignore = true)
     User signUpToUser(SignUpUserDto signUpUserDto);
+
+    @Mapping(target = "password", ignore = true)
+
     Medico signUpToMedico(SingUpMedicoDto singUpMedicoDto);
 
 }

@@ -6,6 +6,7 @@ import com.api.prontuario.dtos.SingUpMedicoDto;
 import com.api.prontuario.dtos.UserDto;
 
 import com.api.prontuario.entites.Medico;
+import com.api.prontuario.entites.User;
 import com.api.prontuario.enums.Role;
 import com.api.prontuario.infra.exceptions.AppException;
 import com.api.prontuario.mappers.UserMapper;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.nio.CharBuffer;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -54,7 +56,10 @@ public class MedicoService {
         Medico medico =  userMapper.signUpToMedico(medicoDto);
         medico.setPassword(passwordEncoder.encode(CharBuffer.wrap(medicoDto.password())));
         medico.setRole(Role.MEDICO);
+        medico.setCrm(medicoDto.crm());
+        medico.setEspecialidade(medicoDto.especialidade());
         Medico saveMedico = medicoRepository.save(medico);
+
 
         return userMapper.toMedicoDto(saveMedico);
     }
@@ -62,6 +67,18 @@ public class MedicoService {
     public void deletar(Long id) {
         medicoRepository.deleteById(id);
     }
+
+
+
+
+    public List<MedicoDto> findAllMedicos() {
+        List<Medico> medicos = medicoRepository.findAll();
+//acho que retorna uma liosta vazia se não encontrar ninguem
+        return medicos.stream()
+                .map(userMapper::toMedicoDto)
+                .collect(Collectors.toList());
+    }
+
 
 //    public MedicoDto findByLogin(String login) {
 //        Medico medico = repository.findByLogin(login).orElseThrow(() -> new AppException("Unknown medico", HttpStatus.NOT_FOUND));
