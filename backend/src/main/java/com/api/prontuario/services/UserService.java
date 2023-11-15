@@ -45,6 +45,26 @@ public class UserService {
         throw new AppException("Invalid password", HttpStatus.BAD_REQUEST);
     }
 
+
+    public UserDto update (Long id, SignUpUserDto userDto){
+
+        User updatedUser = userRepository.findById(id).map(user -> {
+                    user.setNome(userDto.nome());
+                    user.setLogin(userDto.login());
+                    user.setRole(userDto.role());
+                    user.setPassword(userDto.password());
+                    user.setCpf(userDto.cpf());
+                    userRepository.save(user);
+                    return user;
+                })
+                .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
+
+        return userMapper.toUserDto(updatedUser);
+
+    }
+
+
+
     public UserDto register(SignUpUserDto userDto) {
         Optional<User> optionalUser = userRepository.findByLogin(userDto.login());
 

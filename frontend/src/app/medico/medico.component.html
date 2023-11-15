@@ -14,7 +14,7 @@
     <tbody>
       <tr *ngFor="let medico of medicos">
         <td>{{ medico.nome }}</td>
-        <td></td>
+        <td>{{ medico.cpf }}</td>
         <td>
           <button class="btn btn-primary">Update</button>
           <button class="btn btn-danger" style="margin-left: 10px">
@@ -27,4 +27,10 @@
       </tr>
     </tbody>
   </table>
+
+  <p>
+    <ngb-alert [dismissible]="true" (click)="logout()" *ngIf="errorMsg">
+      <strong>Error!</strong> {{ errorMsg }}
+    </ngb-alert>
+  </p>
 </div>

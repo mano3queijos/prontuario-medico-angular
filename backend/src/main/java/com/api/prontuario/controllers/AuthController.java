@@ -41,6 +41,12 @@ public class AuthController {
     }
 
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody  @Valid SignUpUserDto user){
+        UserDto  userDto = userService.update(id, user);
+        userDto.setToken(userAuthenticationProvider.createToken(userDto));
+        return ResponseEntity.ok(userDto);
+    }
 
 
     @GetMapping("/users")

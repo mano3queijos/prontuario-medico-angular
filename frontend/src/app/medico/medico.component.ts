@@ -26,7 +26,7 @@ export class MedicoComponent implements OnInit {
   fetchMedicos() {
 
     this.axiosService.request("GET",
-      "/medico/medicos", {}).then(response => {
+      "/auth/users", {}).then(response => {
         this.medicos = response.data;
       }).catch(error => {
         this.errorMsg = "Ocorreu um erro: " + error.message;
@@ -35,6 +35,11 @@ export class MedicoComponent implements OnInit {
 
 
   }
+
+  logout(): void {
+    this.axiosService.logout();
+  }
+
 
 
 }
