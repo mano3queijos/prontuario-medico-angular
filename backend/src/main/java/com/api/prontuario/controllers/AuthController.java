@@ -1,12 +1,12 @@
 package com.api.prontuario.controllers;
 
 import com.api.prontuario.config.UserAuthenticationProvider;
+import com.api.prontuario.dtos.CredentialsDto;
 import com.api.prontuario.dtos.SignUpUserDto;
+import com.api.prontuario.dtos.UserDto;
 import com.api.prontuario.entites.User;
 import com.api.prontuario.mappers.UserMapper;
 import com.api.prontuario.services.UserService;
-import com.api.prontuario.dtos.CredentialsDto;
-import com.api.prontuario.dtos.UserDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -42,29 +42,32 @@ public class AuthController {
 
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody  @Valid SignUpUserDto user){
-        UserDto  userDto = userService.update(id, user);
+    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody @Valid SignUpUserDto user) {
+        UserDto userDto = userService.update(id, user);
         userDto.setToken(userAuthenticationProvider.createToken(userDto));
         return ResponseEntity.ok(userDto);
     }
 
 
     @GetMapping("/users")
-    public List<UserDto> usuario () {
+    public List<UserDto> usuario() {
 
         List<UserDto> users = userService.findAlldUsers();
 
         return ResponseEntity.ok(users).getBody();
     }
 
-
-    @GetMapping("/usuario/{id}")
-    public ResponseEntity<UserDto> usuarioPorId (@PathVariable Long id) {
-        User user = userService.findById(id);
-        return ResponseEntity.ok(userMapper.toUserDto(user));
+    @DeleteMapping("/delete/ {id}")
+    public ResponseEntity<UserDto> deletarMedicoPorId(@PathVariable Long id) {
+    userService.
     }
 
 
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<UserDto> usuarioPorId(@PathVariable Long id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok(userMapper.toUserDto(user));
+    }
 
 
 }

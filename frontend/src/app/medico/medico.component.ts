@@ -1,3 +1,5 @@
+import { AppComponent } from './../app.component';
+import { CriarMedicoComponent } from './create/criar-medico/criar-medico.component';
 import { Component, OnInit } from '@angular/core';
 import { Medico } from '../shared/model/medico';
 import { AxiosService } from '../axios.service';
@@ -44,10 +46,31 @@ export class MedicoComponent implements OnInit {
   }
 
 
+  createMedcico() {
+
+    this.router.navigate(['createMedico']);
+
+  }
+
+
 
   viewMedico(id: number) {
 
+    this.router.navigate(['viewMedico'])
 
+  }
+
+
+  deleteMedico(id: number) {
+
+    this.router.navigate(['removeMedico'])
+
+  }
+
+
+  updateMedico(id: number) {
+
+    this.router.navigate(['updateMedico'])
 
 
   }

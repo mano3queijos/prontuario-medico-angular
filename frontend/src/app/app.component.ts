@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'crud-angular';
 
 
+
   @Input() logoUcsal: string = './assets/images/logoUcsal.png';
   active = 1;
 

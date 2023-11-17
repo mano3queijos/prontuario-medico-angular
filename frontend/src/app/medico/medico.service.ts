@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { AxiosService } from '../axios.service';
 import { Medico } from '../shared/model/medico';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,12 @@ export class MedicoService {
 
     return { medicos: this.medicos, errorMessage: this.errorMsg };
   }
+
+
+  deleteMedicos(id: number) {
+
+    // const response = await this.axiosService.request("DELETE", "")
+
+  }
+
 }

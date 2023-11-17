@@ -62,8 +62,11 @@ public class UserService {
         return userMapper.toUserDto(updatedUser);
 
     }
-
-
+    public void delete(Long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
+        userRepository.delete(user);
+    }
 
     public UserDto register(SignUpUserDto userDto) {
         Optional<User> optionalUser = userRepository.findByLogin(userDto.login());

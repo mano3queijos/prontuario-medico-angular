@@ -6,8 +6,8 @@ export class User extends Pessoa {
   login: string;
   password: string;
 
-  constructor(cpf: string, nome: string, dataNascimento: Date, telefone: string, role: string, login: string, password: string) {
-    super(cpf, nome, dataNascimento, telefone);
+  constructor(cpf: string, nome: string, dataNascimento: Date, telefone: string, role: string, login: string, password: string, id: number) {
+    super(cpf, nome, dataNascimento, telefone, id);
     this.role = role;
     this.login = login;
     this.password = password;

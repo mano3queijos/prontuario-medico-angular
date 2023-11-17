@@ -3,7 +3,11 @@
 
   <div *ngIf="!isLoading">
     <div class="row">
-      <button class="btn btn-success mb-4 mt-5" style="margin-left: 10px">
+      <button
+        (click)="createMedcico()"
+        class="btn btn-success mb-4 mt-5"
+        style="margin-left: 10px"
+      >
         Criar Medico
       </button>
     </div>
@@ -24,11 +28,21 @@
           <td>{{ medico.especialidade }}</td>
 
           <td>
-            <button class="btn btn-primary">Update</button>
-            <button class="btn btn-danger" style="margin-left: 10px">
+            <button (click)="updateMedico(medico.id)" class="btn btn-primary">
+              Update
+            </button>
+            <button
+              (click)="deleteMedico(medico.id)"
+              class="btn btn-danger"
+              style="margin-left: 10px"
+            >
               Delete
             </button>
-            <button class="btn btn-warning" style="margin-left: 10px">
+            <button
+              (click)="updateMedico(medico.id)"
+              class="btn btn-warning"
+              style="margin-left: 10px"
+            >
               View
             </button>
           </td>
@@ -36,10 +50,10 @@
       </tbody>
     </table>
 
-    <p>
+    <!-- <p>
       <ngb-alert [dismissible]="true" (click)="logout()" *ngIf="errorMsg">
         <strong>Error!</strong> {{ errorMsg }}
       </ngb-alert>
-    </p>
+    </p> -->
   </div>
 </div>
