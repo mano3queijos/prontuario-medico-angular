@@ -1,1 +1,119 @@
-<p>criar-medico works!</p>
+<div class="container-fluid">
+  <form class="mt-4 mx-auto" style="max-width: 900px">
+    <label for="Name">Nome</label>
+    <div class="input-group">
+      <input
+        name="name"
+        placeholder="Nome"
+        [(ngModel)]="medico.nome"
+        type="text"
+        required="required"
+        class="form-control"
+      />
+    </div>
+
+    <label for="text">CPF</label>
+    <div class="input-group">
+      <input
+        id="cpf"
+        name="cpf"
+        placeholder="CPF"
+        [(ngModel)]="medico.cpf"
+        type="text"
+        required="required"
+        class="form-control"
+      />
+    </div>
+    <label for="text2">Data de Nascimento</label>
+    <div class="input-group">
+      <input
+        id="dataNascimento"
+        name="dataNascimento"
+        placeholder="Data De Nascimento"
+        [(ngModel)]="medico.dataNascimento"
+        type="date"
+        required="required"
+        class="form-control"
+      />
+    </div>
+    <label for="text3">Telefone</label>
+    <div class="input-group">
+      <input
+        id="telefone"
+        name="telefone"
+        placeholder="Telefone"
+        [(ngModel)]="medico.telefone"
+        type="text"
+        required="required"
+        class="form-control"
+      />
+    </div>
+    <label for="text4">Senha</label>
+    <div class="input-group">
+      <input
+        id="senha"
+        name="senha"
+        placeholder="SENHA"
+        [(ngModel)]="medico.password"
+        type="password"
+        required="required"
+        class="form-control"
+      />
+    </div>
+    <label for="text5">Login</label>
+    <div class="input-group">
+      <input
+        id="login"
+        name="login"
+        placeholder="Login"
+        [(ngModel)]="medico.login"
+        type="text"
+        required="required"
+        class="form-control"
+      />
+    </div>
+    <label for="text6">CRM</label>
+    <div class="input-group">
+      <input
+        id="crm"
+        name="crm"
+        placeholder="CRM"
+        [(ngModel)]="medico.crm"
+        type="text"
+        required="required"
+        class="form-control"
+      />
+    </div>
+    <label for="text7">Especialidade</label>
+    <div class="input-group">
+      <input
+        id="especialidade"
+        name="especialidade"
+        placeholder="especialidade"
+        type="text"
+        [(ngModel)]="medico.especialidade"
+        required="required"
+        class="form-control"
+      />
+    </div>
+    <div class="mt-2">
+      <button
+        name="submit"
+        (click)="createMedico()"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      <a routerLink="/medico">
+        <button
+          type="button"
+          class="btn btn-danger ms-2 border-0"
+          aria-controls="collapseExample2"
+        >
+          CANCELAR
+        </button>
+      </a>
+    </div>
+  </form>
+</div>

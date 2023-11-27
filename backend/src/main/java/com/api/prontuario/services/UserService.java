@@ -62,7 +62,7 @@ public class UserService {
         return userMapper.toUserDto(updatedUser);
 
     }
-    public void delete(Long id){
+    public void deleteUser(Long id){
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
         userRepository.delete(user);
@@ -72,13 +72,13 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findByLogin(userDto.login());
 
         if (optionalUser.isPresent()) {
-            throw new AppException("Login já existente", HttpStatus.BAD_REQUEST);
+            throw new AppException("Login já existente", HttpStatus.CONFLICT);
         }
 
         List<String> invalidos = validar.validarCamposNulos(userDto);
 
         if (!invalidos.isEmpty()) {
-            throw new AppException("Campos inválidos: " + String.join(", ", invalidos), HttpStatus.BAD_REQUEST);
+            throw new AppException("Campos inválidos: " + String.join(", ", invalidos), HttpStatus.NO_CONTENT);
         }
 
 
@@ -91,15 +91,13 @@ public class UserService {
     }
 
     public User findByLogin(String id) {
-        User user = userRepository.findByLogin(id)
+        return userRepository.findByLogin(id)
                 .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
-        return user;
     }
 
-    public User findById(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
-        return user;
+    public UserDto findById(Long id) {
+        return  userMapper.toUserDto(userRepository.findById(id)
+                .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND)));
     }
     public List<UserDto> findAlldUsers() {
         List<User> users = userRepository.findAll();

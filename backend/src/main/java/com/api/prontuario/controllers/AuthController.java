@@ -22,7 +22,6 @@ public class AuthController {
 
     private final UserService userService;
     private final UserAuthenticationProvider userAuthenticationProvider;
-    private final UserMapper userMapper;
 
     @PostMapping("/login")
     public ResponseEntity<UserDto> login(@RequestBody @Valid CredentialsDto credentialsDto) {
@@ -39,34 +38,29 @@ public class AuthController {
 
         return ResponseEntity.created(URI.create("/users/" + userDto.getId())).body(userDto);
     }
-
-
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody @Valid SignUpUserDto user) {
         UserDto userDto = userService.update(id, user);
         userDto.setToken(userAuthenticationProvider.createToken(userDto));
         return ResponseEntity.ok(userDto);
     }
-
-
     @GetMapping("/users")
     public List<UserDto> usuario() {
-
         List<UserDto> users = userService.findAlldUsers();
-
         return ResponseEntity.ok(users).getBody();
     }
 
-    @DeleteMapping("/delete/ {id}")
-    public ResponseEntity<UserDto> deletarMedicoPorId(@PathVariable Long id) {
-    userService.
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok("User deleted successfully");
     }
 
 
-    @GetMapping("/usuario/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<UserDto> usuarioPorId(@PathVariable Long id) {
-        User user = userService.findById(id);
-        return ResponseEntity.ok(userMapper.toUserDto(user));
+        UserDto userDto = userService.findById(id);
+        return ResponseEntity.ok(userDto);
     }
 
 

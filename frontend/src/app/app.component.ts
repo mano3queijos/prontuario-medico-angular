@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { AxiosService } from './axios.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {

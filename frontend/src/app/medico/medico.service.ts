@@ -32,8 +32,33 @@ export class MedicoService {
 
   deleteMedicos(id: number) {
 
-    // const response = await this.axiosService.request("DELETE", "")
+    this.axiosService.request(
+      "DELETE",
+      "/auth/delete",
+      {
+        id
+      }).then(
+        response => {
+
+          console.log(response.data)
+
+        }).catch(
+          error => {
+            this.errorMsg = "Ocorreu um erro: " + error.message;
+          }
+        );
 
   }
 
+  registerMedicos(medico: Medico) {
+
+    this.axiosService.request("POST", "/auth/register", { medico }).then(response => {
+      alert(response.data)
+    }).catch(error => {
+      alert("Ocorreu um erro: " + error.message);
+    })
+
+
+  }
 }
+

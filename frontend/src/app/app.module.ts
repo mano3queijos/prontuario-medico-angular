@@ -17,6 +17,8 @@ import { RemoverMedicoComponent } from './medico/remove/remover-medico/remover-m
 import { AtualizarMedicoComponent } from './medico/update/atualizar-medico/atualizar-medico.component';
 import { NavbarAdmComponent } from './navbar-adm/navbar-adm.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, NavbarComponent, HomeComponent, NavbarAdmComponent, MedicoComponent, AdmsComponent, CriarMedicoComponent, RemoverMedicoComponent, AtualizarMedicoComponent, DetalharMedicoComponent],
@@ -25,10 +27,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule,
+    MatIconModule, MatFormFieldModule,
 
 
-    NgbModule, FormsModule
+    NgbModule, FormsModule, FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
